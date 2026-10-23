@@ -1,0 +1,149 @@
+.button {
+  /* Tone colours; the destructive tone swaps these. */
+  --_base: var(--jic-color-action);
+  --_hover: var(--jic-color-action-hover);
+  --_pressed: var(--jic-color-action-active);
+  --_soft: var(--jic-color-action-soft);
+  --_height: var(--jic-control-height-md);
+  --_pad: var(--jic-space-4);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--jic-space-2);
+  min-height: var(--_height);
+  min-width: 24px;
+  padding: 0 var(--_pad);
+  border: 1.5px solid transparent;
+  border-radius: var(--jic-radius-control);
+  font-family: var(--jic-font-family);
+  font-size: var(--jic-font-size-md);
+  font-weight: var(--jic-font-weight-semibold);
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--jic-duration) var(--jic-easing),
+    border-color var(--jic-duration) var(--jic-easing),
+    color var(--jic-duration) var(--jic-easing),
+    transform var(--jic-duration) var(--jic-easing);
+}
+
+.button:focus-visible {
+  outline: var(--jic-focus-ring);
+  outline-offset: var(--jic-focus-ring-offset);
+}
+
+.button[data-tone='destructive'] {
+  --_base: var(--jic-color-danger);
+  --_hover: var(--jic-color-danger-hover);
+  --_pressed: var(--jic-color-danger-hover);
+  --_soft: var(--jic-color-danger-soft);
+}
+
+/* Sizes */
+.button[data-size='sm'] {
+  --_height: var(--jic-control-height-sm);
+  --_pad: var(--jic-space-3);
+  font-size: var(--jic-font-size-sm);
+}
+.button[data-size='lg'] {
+  --_height: var(--jic-control-height-lg);
+  --_pad: var(--jic-space-5);
+  font-size: var(--jic-font-size-lg);
+}
+
+/* Primary: solid */
+.button[data-variant='primary'] {
+  background-color: var(--_base);
+  border-color: var(--_base);
+  color: var(--jic-color-on-solid);
+}
+.button[data-variant='primary']:hover {
+  background-color: var(--_hover);
+  border-color: var(--_hover);
+}
+.button[data-variant='primary']:active {
+  background-color: var(--_pressed);
+  border-color: var(--_pressed);
+}
+
+/* Secondary: outlined */
+.button[data-variant='secondary'] {
+  background-color: transparent;
+  border-color: var(--_base);
+  color: var(--_base);
+}
+
+/* Tertiary: text only */
+.button[data-variant='tertiary'] {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--_base);
+}
+
+.button[data-variant='secondary']:hover,
+.button[data-variant='tertiary']:hover {
+  background-color: var(--_soft);
+  color: var(--_pressed);
+}
+.button[data-variant='secondary']:hover {
+  border-color: var(--_pressed);
+}
+
+.button:active:not(:disabled, [aria-disabled='true']) {
+  transform: translateY(1px);
+}
+
+/* Disabled (native and focusable). Disabled controls are exempt from
+   contrast minimums, but these stay readable anyway. */
+.button:disabled,
+.button[aria-disabled='true'] {
+  cursor: not-allowed;
+  transform: none;
+}
+.button[data-variant='primary']:is(:disabled, [aria-disabled='true']) {
+  background-color: var(--jic-color-disabled-bg);
+  border-color: var(--jic-color-disabled-bg);
+  color: var(--jic-color-disabled-text);
+}
+.button[data-variant='secondary']:is(:disabled, [aria-disabled='true']) {
+  background-color: transparent;
+  border-color: var(--jic-color-border-subtle);
+  color: var(--jic-color-disabled-text);
+}
+.button[data-variant='tertiary']:is(:disabled, [aria-disabled='true']) {
+  background-color: transparent;
+  color: var(--jic-color-disabled-text);
+}
+
+/* Icon-only buttons are square. */
+.iconOnly {
+  padding: 0;
+  width: var(--_height);
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.icon > svg {
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.label {
+  display: inline-block;
+}
+
+@media (forced-colors: active) {
+  .button[data-variant='tertiary'] {
+    text-decoration: underline;
+  }
+  .button:is(:disabled, [aria-disabled='true']) {
+    color: GrayText;
+    border-color: GrayText;
+  }
+}

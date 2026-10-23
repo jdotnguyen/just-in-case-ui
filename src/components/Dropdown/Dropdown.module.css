@@ -1,0 +1,162 @@
+.control {
+  position: relative;
+}
+
+.trigger {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--jic-space-2);
+  width: 100%;
+  min-height: var(--jic-control-height-md);
+  padding: var(--jic-space-2) var(--jic-space-3);
+  border: 1px solid var(--jic-color-border);
+  border-radius: var(--jic-radius-control);
+  background-color: var(--jic-color-surface);
+  color: var(--jic-color-text);
+  font-family: var(--jic-font-family);
+  font-size: var(--jic-font-size-md);
+  line-height: var(--jic-line-height);
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    border-color var(--jic-duration) var(--jic-easing),
+    box-shadow var(--jic-duration) var(--jic-easing);
+}
+
+.trigger:hover:not([aria-disabled='true']) {
+  border-color: var(--jic-color-text);
+}
+
+.trigger:focus-visible {
+  outline: var(--jic-focus-ring);
+  outline-offset: var(--jic-focus-ring-offset);
+}
+
+.trigger[data-open] {
+  border-color: var(--jic-color-action);
+  box-shadow: inset 0 0 0 1px var(--jic-color-action);
+}
+
+.trigger[aria-invalid='true'] {
+  border-color: var(--jic-color-danger);
+  box-shadow: inset 0 0 0 1px var(--jic-color-danger);
+}
+
+.trigger[aria-disabled='true'] {
+  background-color: var(--jic-color-disabled-bg);
+  border-color: var(--jic-color-border-subtle);
+  color: var(--jic-color-text-muted);
+  cursor: not-allowed;
+}
+
+.value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder {
+  color: var(--jic-color-text-muted);
+}
+
+.chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--jic-color-text-muted);
+  transition: transform var(--jic-duration) var(--jic-easing);
+}
+
+.trigger[data-open] .chevron {
+  transform: rotate(180deg);
+  color: var(--jic-color-action);
+}
+
+/* Native <select> used only for form submission and validation. It sits
+   under the trigger so the browser's validation bubble points at it. */
+.nativeSelect {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  border: 0;
+  padding: 0;
+}
+
+.listbox {
+  position: fixed;
+  z-index: 1000;
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--jic-space-1);
+  list-style: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background-color: var(--jic-color-surface);
+  border: 1px solid var(--jic-color-border-subtle);
+  border-radius: var(--jic-radius-surface);
+  box-shadow: var(--jic-shadow-popup);
+  font-family: var(--jic-font-family);
+  font-size: var(--jic-font-size-md);
+  line-height: var(--jic-line-height);
+  color: var(--jic-color-text);
+}
+
+.listbox[hidden] {
+  display: none;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--jic-space-3);
+  padding: var(--jic-space-2) var(--jic-space-3);
+  border-radius: var(--jic-radius-option);
+  cursor: pointer;
+  scroll-margin: var(--jic-space-1);
+}
+
+.option[data-active] {
+  background-color: var(--jic-color-action-soft);
+  color: var(--jic-color-action-active);
+  /* A solid bar so the active option doesn't rely on a pale tint alone. */
+  box-shadow: inset 3px 0 0 var(--jic-color-action);
+}
+
+.option[aria-selected='true'] {
+  font-weight: var(--jic-font-weight-semibold);
+}
+
+.option[aria-disabled='true'] {
+  color: var(--jic-color-disabled-text);
+  cursor: not-allowed;
+}
+
+.optionLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.check {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--jic-color-action);
+}
+
+@media (forced-colors: active) {
+  .option[data-active] {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  .option[aria-disabled='true'] {
+    color: GrayText;
+  }
+}

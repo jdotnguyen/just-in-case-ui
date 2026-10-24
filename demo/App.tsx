@@ -48,7 +48,7 @@ export function App() {
           <LifeRingIcon className="brand-logo" />
           <div>
             <p className="brand-name">{SITE_NAME}</p>
-            <p className="brand-tag">Kitchen sink · v0.1</p>
+            <p className="brand-tag">Kitchen sink · v0.3.0</p>
           </div>
         </div>
 

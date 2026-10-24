@@ -11,6 +11,10 @@
 }
 
 .row {
+  /* First line of label text. Spelled out because inputs ignore the inherited
+     font (they default to line-height: normal), so `1lh` on the input is wrong. */
+  --_line: calc(var(--jic-font-size-md) * var(--jic-line-height));
+
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -55,9 +59,8 @@
   box-sizing: border-box;
   width: 20px;
   height: 20px;
-  /* Centre the 20px box on the first line of text (fallback, then exact). */
-  margin: 2px 0 0;
-  margin-top: calc((1lh - 20px) / 2);
+  /* Centre the 20px box on the first line of label text. */
+  margin: calc((var(--_line) - 20px) / 2) 0 0;
   border: 1.5px solid var(--jic-color-border);
   background-color: var(--jic-color-surface);
   background-position: center;

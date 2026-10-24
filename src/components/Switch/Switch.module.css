@@ -1,0 +1,98 @@
+/* The native checkbox is the visible control (appearance: none), so focus,
+   clicks and assistive tech all behave natively. The thumb is a background
+   gradient whose position animates; inputs can't have child elements. */
+.switch {
+  --_thumb: var(--jic-color-border);
+  --_thumb-size: 14px;
+
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 44px;
+  height: 24px;
+  /* Centre the track on the first line of label text (see --_line in Checkbox.module.css). */
+  margin: calc((var(--_line) - 24px) / 2) 0 0;
+  border: 1.5px solid var(--jic-color-border);
+  border-radius: var(--jic-radius-pill);
+  background-color: var(--jic-color-surface);
+  background-image: radial-gradient(
+    circle closest-side,
+    var(--_thumb) calc(100% - 0.75px),
+    transparent 100%
+  );
+  background-size: var(--_thumb-size) var(--_thumb-size);
+  background-repeat: no-repeat;
+  background-position: 3px center;
+  cursor: pointer;
+  transition:
+    background-position var(--jic-duration) var(--jic-easing),
+    background-color var(--jic-duration) var(--jic-easing),
+    border-color var(--jic-duration) var(--jic-easing);
+}
+
+.switch:hover:not(:disabled, :checked) {
+  border-color: var(--jic-color-text);
+  --_thumb: var(--jic-color-text);
+}
+
+.switch:focus-visible {
+  outline: var(--jic-focus-ring);
+  outline-offset: var(--jic-focus-ring-offset);
+}
+
+/* On: thumb slides to the far end, so state is never colour alone. */
+.switch:checked {
+  --_thumb: var(--jic-color-on-solid);
+  border-color: var(--jic-color-action);
+  background-color: var(--jic-color-action);
+  background-position: calc(100% - 3px) center;
+}
+
+.switch:checked:hover:not(:disabled) {
+  border-color: var(--jic-color-action-hover);
+  background-color: var(--jic-color-action-hover);
+}
+
+.switch[aria-invalid='true']:not(:checked) {
+  border-color: var(--jic-color-danger);
+  --_thumb: var(--jic-color-danger);
+}
+
+.switch:disabled {
+  --_thumb: var(--jic-color-disabled-text);
+  border-color: var(--jic-color-border-subtle);
+  background-color: var(--jic-color-disabled-bg);
+  cursor: not-allowed;
+}
+
+.switch:disabled:checked {
+  --_thumb: var(--jic-color-on-solid);
+  border-color: var(--jic-color-disabled-text);
+  background-color: var(--jic-color-disabled-text);
+}
+
+.error {
+  /* Line up with the label text: past the 44px track and the gap. */
+  padding-left: 54px;
+}
+
+@media (forced-colors: active) {
+  .switch {
+    forced-color-adjust: none;
+    --_thumb: CanvasText;
+    border-color: CanvasText;
+    background-color: Canvas;
+  }
+
+  .switch:checked {
+    --_thumb: HighlightText;
+    border-color: Highlight;
+    background-color: Highlight;
+  }
+
+  .switch:disabled {
+    --_thumb: GrayText;
+    border-color: GrayText;
+  }
+}

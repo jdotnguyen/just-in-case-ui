@@ -1,0 +1,97 @@
+.accordion {
+  overflow: hidden;
+  border: 1px solid var(--jic-color-border-subtle);
+  border-radius: var(--jic-radius-surface);
+  background: var(--jic-color-surface);
+  color: var(--jic-color-text);
+  font-family: var(--jic-font-family);
+  font-size: var(--jic-font-size-md);
+  line-height: var(--jic-line-height);
+}
+
+.item + .item {
+  border-top: 1px solid var(--jic-color-border-subtle);
+}
+
+.heading {
+  margin: 0;
+  font: inherit;
+}
+
+.trigger {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--jic-space-3);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--jic-control-height-lg);
+  padding: var(--jic-space-3) var(--jic-space-4);
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: var(--jic-font-weight-semibold);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--jic-duration) var(--jic-easing);
+}
+
+.trigger:hover:not(:disabled) {
+  background-color: var(--jic-color-surface-muted);
+}
+
+/* Inset so the ring isn't clipped by the container's rounded overflow. */
+.trigger:focus-visible {
+  outline: var(--jic-focus-ring);
+  outline-offset: -2px;
+}
+
+.trigger:disabled {
+  color: var(--jic-color-text-muted);
+  cursor: not-allowed;
+}
+
+.trigger[aria-expanded='true'] {
+  color: var(--jic-color-action-active);
+}
+
+.chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--jic-color-text-muted);
+  transition: transform var(--jic-duration) var(--jic-easing);
+}
+
+.trigger[aria-expanded='true'] .chevron {
+  transform: rotate(180deg);
+  color: var(--jic-color-action);
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panelInner {
+  padding: 0 var(--jic-space-4) var(--jic-space-4);
+  color: var(--jic-color-text);
+}
+
+.panelInner > :first-child {
+  margin-top: 0;
+}
+
+.panelInner > :last-child {
+  margin-bottom: 0;
+}
+
+@media (forced-colors: active) {
+  .trigger[aria-expanded='true'] {
+    text-decoration: underline;
+  }
+  .trigger:disabled {
+    color: GrayText;
+  }
+}

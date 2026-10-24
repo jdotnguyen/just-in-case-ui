@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { contrastRatio } from '../utils/contrast';
-import css from './tokens.css?raw';
+import { readFileSync } from 'node:fs';
+
+// Read the file directly: Vitest replaces imported CSS (even `?raw`) with an empty string.
+const css = readFileSync(decodeURIComponent(new URL('./tokens.css', import.meta.url).pathname), 'utf8');
 
 function token(name: string): string {
   const match = css.match(new RegExp(`--jic-${name}:\\s*(#[0-9a-fA-F]{6})`));
@@ -30,6 +33,14 @@ const pairs: Array<[string, string, number, string]> = [
   ['action', 'surface', NON_TEXT, 'focus ring'],
   ['action', 'surface', NON_TEXT, 'checked checkbox / radio'],
   ['danger', 'surface', NON_TEXT, 'invalid checkbox / radio border'],
+  ['success', 'surface', TEXT, 'success toast title and icon'],
+  ['success', 'success-soft', TEXT, 'success badge'],
+  ['warning', 'surface', TEXT, 'warning icon and border on page'],
+  ['warning', 'warning-soft', TEXT, 'warning alert title and icon'],
+  ['text', 'warning-soft', TEXT, 'warning alert body'],
+  ['surface', 'text', TEXT, 'tooltip text on its dark surface'],
+  ['border', 'surface', NON_TEXT, 'switch off track and thumb'],
+  ['on-solid', 'action', NON_TEXT, 'switch thumb on the on track'],
 ];
 
 describe('design tokens', () => {
@@ -41,6 +52,7 @@ describe('design tokens', () => {
     expect(css).toMatch(/--jic-radius-control:\s*10px/);
     expect(css).toMatch(/--jic-radius-surface:\s*12px/);
     expect(css).toMatch(/--jic-radius-checkbox:\s*6px/);
+    expect(css).toMatch(/--jic-radius-pill:\s*999px/);
   });
 
   it('turns off motion for reduced-motion users', () => {

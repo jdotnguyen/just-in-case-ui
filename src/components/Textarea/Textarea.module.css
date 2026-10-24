@@ -1,0 +1,66 @@
+.textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: calc(var(--jic-control-height-md) * 1.5);
+  padding: var(--jic-space-2) var(--jic-space-3);
+  border: 1px solid var(--jic-color-border);
+  border-radius: var(--jic-radius-control);
+  background-color: var(--jic-color-surface);
+  color: var(--jic-color-text);
+  /* 16px prevents iOS from zooming on focus. */
+  font-family: var(--jic-font-family);
+  font-size: var(--jic-font-size-md);
+  line-height: var(--jic-line-height);
+  /* Only vertical: horizontal resizing breaks layouts. */
+  resize: vertical;
+  transition:
+    border-color var(--jic-duration) var(--jic-easing),
+    box-shadow var(--jic-duration) var(--jic-easing);
+}
+
+.textarea::placeholder {
+  color: var(--jic-color-text-muted);
+  opacity: 1;
+}
+
+.textarea:hover:not(:disabled, :read-only) {
+  border-color: var(--jic-color-text);
+}
+
+.textarea:focus-visible {
+  outline: var(--jic-focus-ring);
+  outline-offset: var(--jic-focus-ring-offset);
+  border-color: var(--jic-color-action);
+}
+
+.textarea[aria-invalid='true'] {
+  border-color: var(--jic-color-danger);
+  box-shadow: inset 0 0 0 1px var(--jic-color-danger);
+}
+
+.textarea:disabled {
+  background-color: var(--jic-color-disabled-bg);
+  border-color: var(--jic-color-border-subtle);
+  color: var(--jic-color-text-muted);
+  cursor: not-allowed;
+  resize: none;
+}
+
+.textarea:read-only:not(:disabled) {
+  background-color: var(--jic-color-surface-muted);
+  border-style: dashed;
+}
+
+.counter {
+  margin: calc(var(--jic-space-1) * -1) 0 0;
+  align-self: flex-end;
+  font-size: var(--jic-font-size-sm);
+  color: var(--jic-color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.counter[data-near-limit] {
+  color: var(--jic-color-danger);
+  font-weight: var(--jic-font-weight-semibold);
+}

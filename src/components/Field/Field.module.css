@@ -66,7 +66,8 @@
      gap applies to it like the label in Field. */
   float: left;
   width: 100%;
-  margin: 0;
+  /* Extra space on top of the fieldset gap, so the options don't crowd the legend. */
+  margin: 0 0 var(--jic-space-1);
   padding: 0;
   font-size: var(--jic-font-size-sm);
   font-weight: var(--jic-font-weight-semibold);

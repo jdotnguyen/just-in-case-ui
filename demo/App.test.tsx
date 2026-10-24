@@ -20,7 +20,7 @@ describe('Kitchen-sink demo', () => {
   it('has a left sidebar nav listing every page', () => {
     render(<App />);
     const nav = screen.getByRole('navigation', { name: 'Components' });
-    for (const label of ['Overview', 'Button', 'Text input', 'Dropdown', 'Checkbox', 'Radio group', 'Dialog']) {
+    for (const label of ROUTES.map((route) => route.label)) {
       expect(within(nav).getByRole('link', { name: label })).toBeInTheDocument();
     }
   });

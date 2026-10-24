@@ -1,0 +1,111 @@
+.viewport {
+  position: fixed;
+  inset: auto var(--jic-space-4) var(--jic-space-4) auto;
+  z-index: var(--jic-z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--jic-space-3);
+  width: min(400px, calc(100vw - 2 * var(--jic-space-4)));
+  /* Let clicks through the empty area; toasts opt back in. */
+  pointer-events: none;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--jic-space-3);
+}
+
+.toast {
+  --_accent: var(--jic-color-action);
+
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--jic-space-3);
+  box-sizing: border-box;
+  padding: var(--jic-space-3) var(--jic-space-3) var(--jic-space-3) var(--jic-space-4);
+  border: 1px solid var(--jic-color-border-subtle);
+  border-inline-start: 4px solid var(--_accent);
+  border-radius: var(--jic-radius-surface);
+  background: var(--jic-color-surface);
+  color: var(--jic-color-text);
+  box-shadow: var(--jic-shadow-popup);
+  font-family: var(--jic-font-family);
+  font-size: var(--jic-font-size-md);
+  line-height: var(--jic-line-height);
+  pointer-events: auto;
+  animation: jic-toast-in calc(var(--jic-duration) * 2) var(--jic-easing);
+}
+
+.toast[data-tone='success'] {
+  --_accent: var(--jic-color-success);
+}
+
+.toast[data-tone='danger'] {
+  --_accent: var(--jic-color-danger);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  /* Centre on the first line of text. */
+  margin-top: calc((1em * var(--jic-line-height) - 20px) / 2);
+  color: var(--_accent);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding-block: 4px;
+}
+
+.title,
+.description {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.title {
+  font-weight: var(--jic-font-weight-semibold);
+}
+
+.description {
+  font-size: var(--jic-font-size-sm);
+  color: var(--jic-color-text-muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--jic-space-1);
+}
+
+@keyframes jic-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@media (max-width: 480px) {
+  .viewport {
+    inset-inline: var(--jic-space-4);
+    width: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .toast {
+    border: 2px solid CanvasText;
+    border-inline-start-width: 6px;
+  }
+}

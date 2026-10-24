@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { ToastProvider } from '../src';
 import { LifeRingIcon } from './components/icons';
 import { DEFAULT_PATH, ROUTE_PATHS, ROUTES } from './routes';
 import type { DemoRoute } from './routes';
@@ -24,10 +25,11 @@ export function App() {
     headingRef.current?.focus();
   }, [route]);
 
-  const groups = ['Foundations', 'Components'] as const;
+  const groups = ['Foundations', 'Inputs', 'Navigation and disclosure', 'Overlays and feedback'] as const;
   const { Page } = route;
 
   return (
+    <ToastProvider>
     <div className="shell">
       <a
         className="skip-link"
@@ -79,6 +81,7 @@ export function App() {
         <Page />
       </main>
     </div>
+    </ToastProvider>
   );
 }
 

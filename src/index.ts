@@ -53,4 +53,28 @@ export type { MenuItem, MenuPlacement, MenuProps } from './components/Menu/Menu'
 export { Combobox } from './components/Combobox/Combobox';
 export type { ComboboxOption, ComboboxProps } from './components/Combobox/Combobox';
 
+export { Badge } from './components/Badge/Badge';
+export type { BadgeProps, BadgeTone } from './components/Badge/Badge';
+
+export { Progress } from './components/Progress/Progress';
+export type { ProgressProps } from './components/Progress/Progress';
+
+export { Spinner } from './components/Spinner/Spinner';
+export type { SpinnerProps, SpinnerSize } from './components/Spinner/Spinner';
+
+export { Link } from './components/Link/Link';
+export type { LinkProps } from './components/Link/Link';
+
+export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
+export type { BreadcrumbItem, BreadcrumbsProps } from './components/Breadcrumbs/Breadcrumbs';
+
+export { Pagination } from './components/Pagination/Pagination';
+export type { PaginationProps } from './components/Pagination/Pagination';
+
+export { PasswordInput } from './components/PasswordInput/PasswordInput';
+export type { PasswordInputProps } from './components/PasswordInput/PasswordInput';
+
+export { SearchInput } from './components/SearchInput/SearchInput';
+export type { SearchInputProps } from './components/SearchInput/SearchInput';
+
 export { contrastRatio } from './utils/contrast';

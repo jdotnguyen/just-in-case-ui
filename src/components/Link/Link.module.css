@@ -1,0 +1,33 @@
+.link {
+  border-radius: 2px;
+  color: var(--jic-color-action);
+  font-family: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+  transition: color var(--jic-duration) var(--jic-easing);
+}
+
+.link:hover {
+  color: var(--jic-color-action-active);
+  text-decoration-thickness: 2.5px;
+}
+
+.link:focus-visible {
+  outline: var(--jic-focus-ring);
+  outline-offset: var(--jic-focus-ring-offset);
+}
+
+.external {
+  display: inline-block;
+  width: 0.95em;
+  height: 0.95em;
+  margin-inline-start: 0.2em;
+  vertical-align: -0.1em;
+}
+
+@media (forced-colors: active) {
+  .link {
+    color: LinkText;
+  }
+}

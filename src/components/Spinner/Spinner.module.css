@@ -1,0 +1,66 @@
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--jic-space-2);
+  color: var(--jic-color-action);
+  font-family: var(--jic-font-family);
+  font-size: var(--jic-font-size-md);
+  line-height: var(--jic-line-height);
+}
+
+.graphic {
+  --_size: 24px;
+
+  flex-shrink: 0;
+  width: var(--_size);
+  height: var(--_size);
+  animation: jic-spin 0.9s linear infinite;
+}
+
+.spinner[data-size='sm'] .graphic {
+  --_size: 16px;
+}
+
+.spinner[data-size='lg'] .graphic {
+  --_size: 40px;
+}
+
+.track {
+  stroke: var(--jic-color-border-subtle);
+}
+
+.arc {
+  stroke: currentColor;
+}
+
+.text {
+  color: var(--jic-color-text);
+}
+
+@keyframes jic-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes jic-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No spinning: a slow fade says "still working" without movement. */
+  .graphic {
+    animation: jic-pulse 1.6s ease-in-out infinite;
+  }
+}
+
+@media (forced-colors: active) {
+  .spinner {
+    color: Highlight;
+  }
+  .track {
+    stroke: GrayText;
+  }
+}

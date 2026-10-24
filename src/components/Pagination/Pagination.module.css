@@ -1,0 +1,85 @@
+.nav {
+  font-family: var(--jic-font-family);
+  font-size: var(--jic-font-size-md);
+  line-height: var(--jic-line-height);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--jic-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: var(--jic-control-height-md);
+  height: var(--jic-control-height-md);
+  margin: 0;
+  padding: 0 var(--jic-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--jic-radius-control);
+  background: transparent;
+  color: var(--jic-color-text);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--jic-duration) var(--jic-easing),
+    color var(--jic-duration) var(--jic-easing);
+}
+
+.item:hover:not(:disabled, [aria-current='page']) {
+  background: var(--jic-color-action-soft);
+  color: var(--jic-color-action-active);
+}
+
+.item:focus-visible {
+  outline: var(--jic-focus-ring);
+  outline-offset: var(--jic-focus-ring-offset);
+}
+
+/* The current page is solid blue, and also bold, so it isn't colour alone. */
+.item[aria-current='page'] {
+  border-color: var(--jic-color-action);
+  background: var(--jic-color-action);
+  color: var(--jic-color-on-solid);
+  font-weight: var(--jic-font-weight-semibold);
+  cursor: default;
+}
+
+.item:disabled {
+  color: var(--jic-color-disabled-text);
+  cursor: not-allowed;
+}
+
+.chevron {
+  width: 20px;
+  height: 20px;
+}
+
+.ellipsis {
+  min-width: var(--jic-control-height-md);
+  color: var(--jic-color-text-muted);
+  text-align: center;
+  user-select: none;
+}
+
+@media (forced-colors: active) {
+  .item[aria-current='page'] {
+    forced-color-adjust: none;
+    border-color: Highlight;
+    background: Highlight;
+    color: HighlightText;
+  }
+  .item:disabled {
+    color: GrayText;
+  }
+}

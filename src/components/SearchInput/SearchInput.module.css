@@ -1,0 +1,67 @@
+.control {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: var(--jic-space-3);
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  color: var(--jic-color-text-muted);
+  pointer-events: none;
+}
+
+.input {
+  padding-left: 40px;
+  padding-right: 44px;
+}
+
+/* Our Clear search button replaces the browser's own one. */
+.input::-webkit-search-cancel-button,
+.input::-webkit-search-decoration {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.clear {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: var(--jic-radius-option);
+  background: transparent;
+  color: var(--jic-color-text-muted);
+  cursor: pointer;
+}
+
+.clear:hover {
+  background: var(--jic-color-action-soft);
+  color: var(--jic-color-action-active);
+}
+
+.clear:focus-visible {
+  outline: var(--jic-focus-ring);
+  outline-offset: -2px;
+}
+
+.clear svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (forced-colors: active) {
+  .clear,
+  .icon {
+    color: ButtonText;
+  }
+}

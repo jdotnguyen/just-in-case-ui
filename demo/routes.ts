@@ -1,19 +1,27 @@
 import type { ComponentType } from 'react';
 import { AccordionPage } from './pages/AccordionPage';
 import { AlertPage } from './pages/AlertPage';
+import { BadgePage } from './pages/BadgePage';
+import { BreadcrumbsPage } from './pages/BreadcrumbsPage';
 import { ButtonPage } from './pages/ButtonPage';
 import { CheckboxPage } from './pages/CheckboxPage';
 import { ComboboxPage } from './pages/ComboboxPage';
 import { DialogPage } from './pages/DialogPage';
 import { DropdownPage } from './pages/DropdownPage';
+import { LinkPage } from './pages/LinkPage';
 import { MenuPage } from './pages/MenuPage';
 import { OverviewPage } from './pages/OverviewPage';
+import { PaginationPage } from './pages/PaginationPage';
+import { PasswordInputPage } from './pages/PasswordInputPage';
 import { PopoverPage } from './pages/PopoverPage';
+import { ProgressPage } from './pages/ProgressPage';
 import { RadioGroupPage } from './pages/RadioGroupPage';
+import { SearchInputPage } from './pages/SearchInputPage';
+import { SpinnerPage } from './pages/SpinnerPage';
 import { SwitchPage } from './pages/SwitchPage';
 import { TabsPage } from './pages/TabsPage';
-import { TextareaPage } from './pages/TextareaPage';
 import { TextInputPage } from './pages/TextInputPage';
+import { TextareaPage } from './pages/TextareaPage';
 import { ToastPage } from './pages/ToastPage';
 import { TooltipPage } from './pages/TooltipPage';
 
@@ -53,6 +61,24 @@ export const ROUTES: DemoRoute[] = [
     description:
       'A single-line field with a visible label, helper text, and errors that are announced, not just coloured.',
     Page: TextInputPage,
+  },
+  {
+    path: 'password-input',
+    label: 'Password input',
+    group: 'Inputs',
+    eyebrow: 'Component',
+    description:
+      'A password field with a Show password toggle that keeps focus and your text exactly where they were.',
+    Page: PasswordInputPage,
+  },
+  {
+    path: 'search-input',
+    label: 'Search input',
+    group: 'Inputs',
+    eyebrow: 'Component',
+    description:
+      'A native search field with a named Clear search button, Escape to clear and Enter to search.',
+    Page: SearchInputPage,
   },
   {
     path: 'textarea',
@@ -109,6 +135,33 @@ export const ROUTES: DemoRoute[] = [
     Page: SwitchPage,
   },
   {
+    path: 'link',
+    label: 'Link',
+    group: 'Navigation and disclosure',
+    eyebrow: 'Component',
+    description:
+      'Always underlined, so it never relies on colour. External links open a new tab and say so.',
+    Page: LinkPage,
+  },
+  {
+    path: 'breadcrumbs',
+    label: 'Breadcrumbs',
+    group: 'Navigation and disclosure',
+    eyebrow: 'Component',
+    description:
+      'Shows where you are in a hierarchy, as a labelled list with the current page marked.',
+    Page: BreadcrumbsPage,
+  },
+  {
+    path: 'pagination',
+    label: 'Pagination',
+    group: 'Navigation and disclosure',
+    eyebrow: 'Component',
+    description:
+      'Previous, next and numbered pages, with the current page marked and each change announced.',
+    Page: PaginationPage,
+  },
+  {
     path: 'tabs',
     label: 'Tabs',
     group: 'Navigation and disclosure',
@@ -134,6 +187,33 @@ export const ROUTES: DemoRoute[] = [
     description:
       'A message that stays in the page. Meaning comes from an icon and text as well as colour, and it is silent unless you ask it to be announced.',
     Page: AlertPage,
+  },
+  {
+    path: 'badge',
+    label: 'Badge',
+    group: 'Overlays and feedback',
+    eyebrow: 'Component',
+    description:
+      'A short status label. Always has words, so colour is never the only clue.',
+    Page: BadgePage,
+  },
+  {
+    path: 'progress',
+    label: 'Progress',
+    group: 'Overlays and feedback',
+    eyebrow: 'Component',
+    description:
+      'A progress bar with a visible label. Determinate or indeterminate, and still when motion is reduced.',
+    Page: ProgressPage,
+  },
+  {
+    path: 'spinner',
+    label: 'Spinner',
+    group: 'Overlays and feedback',
+    eyebrow: 'Component',
+    description:
+      'A loading indicator with a spoken label. It fades instead of spinning for people who prefer reduced motion.',
+    Page: SpinnerPage,
   },
   {
     path: 'dialog',

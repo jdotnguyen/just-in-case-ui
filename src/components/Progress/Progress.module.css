@@ -1,0 +1,78 @@
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--jic-space-2);
+  font-family: var(--jic-font-family);
+  font-size: var(--jic-font-size-sm);
+  line-height: var(--jic-line-height);
+  color: var(--jic-color-text);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--jic-space-3);
+}
+
+.label {
+  font-weight: var(--jic-font-weight-semibold);
+}
+
+.value {
+  color: var(--jic-color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  position: relative;
+  box-sizing: border-box;
+  height: 12px;
+  overflow: hidden;
+  /* A border so the whole length of the track is visible, not just the fill. */
+  border: 1px solid var(--jic-color-border);
+  border-radius: var(--jic-radius-pill);
+  background: var(--jic-color-surface-muted);
+}
+
+.bar {
+  height: 100%;
+  border-radius: var(--jic-radius-pill);
+  background: var(--jic-color-action);
+  transition: inline-size calc(var(--jic-duration) * 2) var(--jic-easing);
+}
+
+.track[data-indeterminate] .bar {
+  position: absolute;
+  inset-block: 0;
+  inline-size: 40%;
+  animation: jic-progress-slide 1.4s var(--jic-easing) infinite;
+}
+
+@keyframes jic-progress-slide {
+  from {
+    inset-inline-start: -40%;
+  }
+  to {
+    inset-inline-start: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No sliding: show a half-width static bar with a dashed edge instead. */
+  .track[data-indeterminate] .bar {
+    animation: none;
+    inset-inline-start: 0;
+    inline-size: 50%;
+    border-inline-end: 3px dashed var(--jic-color-surface);
+  }
+}
+
+@media (forced-colors: active) {
+  .track {
+    border-color: CanvasText;
+  }
+  .bar {
+    forced-color-adjust: none;
+    background: Highlight;
+  }
+}

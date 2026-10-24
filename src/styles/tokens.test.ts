@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { contrastRatio } from '../utils/contrast';
 import { readFileSync } from 'node:fs';
 
-// Read the file directly: Vitest replaces imported CSS (even `?raw`) with an empty string.
-const css = readFileSync(decodeURIComponent(new URL('./tokens.css', import.meta.url).pathname), 'utf8');
+// Vitest runs from the project root, so a relative path works. Read the file directly: Vitest replaces imported CSS (even `?raw`) with an empty string.
+const css = readFileSync('src/styles/tokens.css', 'utf8');
 
 function token(name: string): string {
   const match = css.match(new RegExp(`--jic-${name}:\\s*(#[0-9a-fA-F]{6})`));
